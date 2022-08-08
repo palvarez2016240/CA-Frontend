@@ -1,0 +1,112 @@
+.banner{
+  background-image: url("/assets/img/historiaBann.png");
+  height:200px;
+}
+
+.banner>h2,
+.banner .info{
+  height:50px;
+  line-height:50px;
+  position:relative;
+  top:75px;
+  margin:0 auto;
+  text-align:center;
+  width:50%;
+}
+
+.banner>h2{
+  font-size:2.5em;
+  color:white;
+  font-weight: bold;
+}
+
+.banner .info{
+  display:none;
+}
+
+.banner a{
+	height:50px;
+  font-size:1.3em;
+  display:inline-block;
+  width:48%;
+  text-decoration:none;
+  border:2px solid rgba(0,0,0,.3);
+  margin-right:-4px;
+  transition:all .3s ease-in-out;
+}
+
+.banner a:last-child{
+ 	margin-left:2%;
+}
+
+.banner a:hover{
+  background:#8FC6FF;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+@import url(https://fonts.googleapis.com/css?family=Source+Serif+Pro);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Source Serif Pro, serif;
+  line-height: 1.5; font-size: 1.3rem;
+
+  > p:not(:first-of-type) {
+  margin-right: 50%;
+    // ensures that text (after the first paragraph) is readable around the sticky element
+    @media all and (max-width: 600px) {
+      margin-right: 0;
+      // removes this margin at small screen sizes
+    }
+}
+}
+div#sticky {
+  font-family: Open Sans, sans-serif;
+  font-size: 1.1rem;
+  width: 50%;
+  padding: 2.2rem;
+  padding-bottom: 3rem;
+  padding-bottom: 0px;
+  padding-top: 0;
+  float: right;
+  position: -webkit-sticky;
+  // for Safari
+  // position: sticky;
+  // for Firefox & final spec
+  top: 0px;
+  // _required_. (Alternatively, bottom, left or right, depending on direction of scroll)
+  @media all and (max-width: 600px) {
+		position: static !important;
+    float: none;
+    width: 100%;
+    padding-bottom: 0;
+    // resets the block to flow with the rest of the document at small screen widths
+}
+  img {
+    width: 100%;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  +div {
+  display: none;
+    // gets rid of the empty div imposed by the polyfill below the previously sticky element when the screen width is low.
+}
+}
+
+p{
+  text-align: justify;
+  margin: 30px;
+}
+
+h2{
+  text-align: center;
+  color: green;
+  font-weight: bold;
+
+}

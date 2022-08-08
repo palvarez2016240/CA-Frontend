@@ -1,0 +1,122 @@
+<div *ngIf="_usuarioService.obtenerIdentidad().usuario != null">
+
+  <!-- Panel de control lateral -->
+  <nav class="main-menu">
+    <div class="scrollbar" id="style-1">
+      <ul>
+        <li routerLink="/Inicio">
+          <i class="fa fa-home fa-lg"></i>
+          <span class="nav-text">Inicio</span>
+        </li>
+
+        <li routerLink="/Dashboard">
+          <i class="fa fa-user fa-lg"></i>
+          <span class="nav-text">Perfil</span>
+        </li>
+
+        <li class="darkerlishadow" routerLink="/PanelNoticias">
+          <i class="fa fa-file" aria-hidden="true"></i>
+          <span class="nav-text">Noticias</span>
+        </li>
+
+        <li class="darkerli" routerLink="/Publicadores">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <span class="nav-text">Publicadores</span>
+        </li>
+
+        <li class="darkerli" routerLink="/Comentarios">
+          <i class="fa fa-comments-o" aria-hidden="true"></i>
+          <span class="nav-text">Comentarios</span>
+        </li>
+      </ul>
+
+      <ul class="logout">
+        <li (click)="cerrarSesion()" routerLink="/Inicio">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <span class="nav-text">
+            Cerrar Sesión
+          </span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+   <!-- Titulo -->
+   <div class="container">
+    <div class="row justify-content-md-center d-none d-md-block">
+      <div class="col-md-auto">
+        <br> <br>
+        <h1 class="titulo">Panel de Comentarios</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cuerpo -->
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+
+        <div class="comments-container" *ngFor="let comts of comentarios">
+
+          <ul id="comments-list" class="comments-list">
+            <li >
+              <div class="comment-main-level">
+                <div class="comment-box">
+                  <div class="comment-head">
+                    <h6 class="comment-name" [routerLink]="['/Post', comts.idPost]"><a>{{comts.namePost}}</a></h6>
+                    <span>{{ comts.datePublication }}</span>
+
+                    <i class="fa fa-trash-o deletes"  style="color: red;" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#EliminarComment"
+                      (click)="getComment(comts._id)" ></i>
+
+                  </div>
+                  <div class="comment-content">
+                    <strong>{{ comts.comment }}</strong>
+                  </div>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!--MODAL ELIMINAR COMENTARIO-->
+  <div class="modal fade" id="EliminarComment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Eliminar el Comentario
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar el comentario <strong>{{nameComment}}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+         (click)="removeCommment()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Mensaje sin autorizaion -->
+ <div class="container" *ngIf="_usuarioService.obtenerIdentidad().usuario == null">
+  <br />
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h1 class="tit">NO TIENES AUTORIZACIÓN</h1>
+    </div>
+  </div>
+</div>

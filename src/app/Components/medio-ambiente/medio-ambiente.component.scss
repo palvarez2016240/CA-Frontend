@@ -1,0 +1,354 @@
+.banner{
+  background-image: url("/assets/img/ambienteBann.jpg");
+  height:200px;
+}
+
+.banner>h2,
+.banner .info{
+  height:50px;
+  line-height:50px;
+  position:relative;
+  top:75px;
+  margin:0 auto;
+  text-align:center;
+  width:50%;
+}
+
+.banner>h2{
+  font-size:2.5em;
+  color:white;
+  font-weight: bold;
+}
+
+.banner .info{
+  display:none;
+}
+
+.banner a{
+	height:50px;
+  font-size:1.3em;
+  display:inline-block;
+  width:48%;
+  text-decoration:none;
+  border:2px solid rgba(0,0,0,.3);
+  margin-right:-4px;
+  transition:all .3s ease-in-out;
+}
+
+.banner a:last-child{
+ 	margin-left:2%;
+}
+
+.banner a:hover{
+  background:#8FC6FF;
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------
+
+.glyphicon { margin-right:5px; }
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+h2{
+  color: green;
+}
+
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ecf9ff;
+}
+
+body {
+  color: #272727;
+  font-family: 'Quicksand', serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+}
+
+.main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.btn {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+ .card_content {
+   padding: 1rem;
+ }
+
+.card_title {
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: black;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+.made_by{
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.columnsContainer, footer, header { position: relative;  }
+
+.leftColumn, .rightColumn, footer, header { padding: 1.25em; }
+
+
+@media screen and (min-width: 47.5em ) {
+    .rightColumn { position: absolute; top: 0; right: 0; width: 18.75em; }
+}
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+p{
+  text-align: justify;
+}
+
+
+/*** Import Fonts ***/
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+
+/*** Variables ***/
+$Lato:	'Lato', sans-serif;
+$Open-sans:	'Open Sans', sans-serif;
+$dark-gray: #3c3c3c;
+
+
+/* --------------------------------
+Small Window Size and Mobile Style
+-------------------------------- */
+
+@media screen and (max-width: 875px) {
+  .button-container {
+    margin: 10px 10px !important;
+  }
+
+  h2 {
+	  font-size: 15vw !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+	.nav, .navbar {
+		width: 90% !important;
+
+		.nav-item {
+			font-size: 10px !important;
+		}
+	}
+}
+
+@media screen and (max-width: 350px) {
+
+	.navbar-container {
+		height: 120px !important;
+	}
+	.nav, .navbar {
+		flex-wrap: wrap !important;
+
+		.nav-item {
+			margin: 5px 5px !important;
+		}
+	}
+}
+
+/* --------------------------------
+		General Style
+-------------------------------- */
+
+html, body {
+	font-family: $Lato;
+	font-weight: 300;
+}
+
+/*** Navbar ***/
+
+.navbar-container {
+
+	z-index: 10;
+
+}
+
+
+.nav, .navbar {
+	width: 500px;
+	margin: auto;
+	font-family: $Lato;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	list-style: none;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+
+	a {
+		color: $dark-gray;
+		text-decoration: none;
+	}
+
+	.nav-item {
+      padding: 5px 0;
+
+		&:after {
+			content: '\00a0';
+			display: block;
+			height: 1px;
+			width: 100%;
+			position: relative;
+			top: 3px;
+			background: transparent;
+			transition: top .3s ease-out;
+			-webkit-transition: top .3s ease-out;
+		}
+
+		&:hover:after {
+			top: 7px;
+			background: #3c3c3c;
+		}
+	}
+}
+
+

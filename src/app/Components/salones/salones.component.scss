@@ -1,0 +1,102 @@
+  .banner{
+    background-image: url("/assets/img/salonBann.jpg");
+    height:200px;
+  }
+
+  .banner>h2,
+  .banner .info{
+    height:50px;
+    line-height:50px;
+    position:relative;
+    top:75px;
+    margin:0 auto;
+    text-align:center;
+    width:50%;
+  }
+
+  .banner>h2{
+    font-size:2.5em;
+    color:white;
+    font-weight: bold;
+  }
+
+  .banner .info{
+    display:none;
+  }
+
+  .banner a{
+    height:50px;
+    font-size:1.3em;
+    display:inline-block;
+    width:48%;
+    text-decoration:none;
+    border:2px solid rgba(0,0,0,.3);
+    margin-right:-4px;
+    transition:all .3s ease-in-out;
+  }
+
+  .banner a:last-child{
+    margin-left:2%;
+  }
+
+  .banner a:hover{
+    background:#8FC6FF;
+  }
+
+  //----------------------------------------------------------------------------------------------------------------------------------------
+
+  .row {
+    margin: 15px;
+  }
+
+  .fot{
+    margin: 3px;
+  }
+
+  h2{
+    text-align: center;
+    color: green;
+    font-weight: bold;
+
+  }
+
+  li{
+    text-decoration: none;
+    list-style: none;
+  }
+
+  .imgs{
+    transition: all 300ms;
+  }
+
+  .imgs:hover{
+    transform: scale(1.76, 2.3);
+  }
+
+  .subtitulo{
+    color: black;
+  }
+
+  .fot:hover>h5{
+    line-height:50px;
+    position:relative;
+    margin:0 auto;
+    text-align:center;
+    width:50%;
+  }
+
+  .fot:hover>h5{
+    font-size:2.5em;
+    color:white;
+    font-weight: bold;
+  }
+
+  h5{
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .col-md-5{
+    text-decoration: none !important
+  }

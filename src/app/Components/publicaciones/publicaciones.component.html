@@ -1,0 +1,113 @@
+<table class="entire-page">
+  <tr>
+    <td>
+      <table class="email-body">
+        <tr>
+          <td class="news-section">
+            <br />
+            <h1 class="titu">{{ modelPost.title }}</h1>
+
+            <br /><br />
+
+            <div class="container" *ngIf="link != null && modelPost.live == true">
+              <div class="row justify-content-md-center">
+                <div class="col-md-auto col-sm-1">
+                  <youtube-player videoId="{{ link }}" suggestedQuality="highres" [height]="425" [width]="850">
+                  </youtube-player>
+                </div>
+              </div>
+            </div>
+
+            <i class="rv">{{ modelPost.review }}</i>
+
+            <br /><br />
+
+            <p class="autor" [routerLink]="['/Autor', modelPost.author]">
+              Por {{ modelPost.authorName }}
+            </p>
+
+            <div *ngIf="modelPost.dateUpdate === null">
+              <p>Publicado: {{ modelPost.datePublication }}</p>
+            </div>
+
+            <div *ngIf="modelPost.dateUpdate != null">
+              <p>
+                Publicado: {{ modelPost.datePublication }} - Publicacion
+                editada:{{ modelPost.dateUpdate }}
+              </p>
+            </div>
+
+            <br />
+
+            <p style="color: black" [innerHTML]="modelPost.description"></p>
+
+            <br />
+
+            <div class="container" *ngIf="link != null && modelPost.live == false">
+              <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                  <youtube-player videoId="{{ link }}" suggestedQuality="highres"></youtube-player>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<br />
+<hr />
+
+<div class="container" *ngIf="modelPost.comments === false">
+  <br />
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <h5 style="text-align: center">Comentarios desactivados...</h5>
+    </div>
+    <div class="col"></div>
+  </div>
+  <br />
+</div>
+
+<div class="comments-container" *ngIf="modelPost.comments === true">
+  <h1>Comentarios</h1>
+
+  <br />
+
+  <form>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="Comentarios" placeholder="Realizar un comentario..." name="comment"
+        #comment="ngModel" [(ngModel)]="modelComments.comment" />
+    </div>
+
+    <div class="mb-3" *ngIf="_usuarioService.obtenerIdentidad().usuario != null">
+      <input style="margin: 10px;" type="checkbox" id="true" name="admin" value="true" checked name="admin"
+      #admin="ngModel" [(ngModel)]="modelComments.admin">
+      <label  for="true">Comentar como Administrador</label>
+    </div>
+
+    <button type="submit" class="btn btn-outline-success" (click)="crearComentario(modelPost._id)">
+      Publicar
+    </button>
+  </form>
+
+  <ul id="comments-list" class="comments-list" *ngFor="let comts of comentarios">
+    <li>
+      <div class="comment-main-level">
+        <div class="comment-box">
+          <div class="comment-head">
+            <h6  *ngIf="comts.admin != true" class="comment-name"><a>Vecino</a></h6>
+            <h6  *ngIf="comts.admin != false" class="comment-name"><i class="fa fa-wrench" aria-hidden="true"></i> <a> Administrador</a></h6>
+            <span>{{ comts.datePublication }}</span>
+          </div>
+          <div class="comment-content">
+            {{ comts.comment }}
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

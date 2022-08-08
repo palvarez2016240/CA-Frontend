@@ -1,0 +1,181 @@
+<div *ngIf="_usuarioService.obtenerIdentidad().usuario != null">
+  <nav class="main-menu">
+    <div class="scrollbar" id="style-1">
+      <ul>
+        <li routerLink="/Inicio">
+          <i class="fa fa-home fa-lg"></i>
+          <span class="nav-text" >Inicio</span>
+        </li>
+
+        <li  routerLink="/Dashboard">
+          <i class="fa fa-user fa-lg"></i>
+          <span class="nav-text">Perfil</span>
+        </li>
+
+        <li class="darkerlishadow" routerLink="/PanelNoticias">
+          <i class="fa fa-file" aria-hidden="true"></i>
+          <span class="nav-text">Noticias</span>
+        </li>
+
+        <li class="darkerli" routerLink="/Publicadores">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <span class="nav-text" >Publicadores</span>
+        </li>
+
+        <li class="darkerli"  routerLink="/Comentarios">
+          <i class="fa fa-comments-o" aria-hidden="true"></i>
+          <span class="nav-text">Comentarios</span>
+        </li>
+      </ul>
+
+      <ul class="logout">
+        <li (click)="cerrarSesion()" routerLink="/Inicio">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <span class="nav-text" >
+            Cerrar Sesión
+          </span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row justify-content-md-center d-none d-md-block">
+      <div class="col-md-auto">
+        <h1>Panel de Control</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 d-none d-md-block infinity-image-container">
+        Bienvenido al panel de control, aqui podras administrar la aplicacion web La Centroamérica zona 7.
+        Realizando publicaciones sobre noticias de la Colonia, llevando un control de los comentarios y personal
+        autorizado.
+        <br />
+        <img style="max-width: 400px"
+          src="https://img.freepik.com/vector-gratis/concepto-trabajo-programador-aislado-creacion-desarrollo-software-programas-escena-personas-diseno-plano-dibujos-animados-ilustracion-vectorial-blogs-sitios-web-aplicaciones-moviles-materiales-promocionales_9209-6543.jpg?w=2000"
+          alt="" />
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 align-self-center"></div>
+            <div class="col-lg-9 col-md-12 col-sm-8 col-xs-6 infinity-form">
+              <form class="px-3">
+                <div class="form-input">
+                  <label for="exampleInputPassword1" class="form-label">Usuario</label>
+                  <span><i class="bi bi-person-fill"></i></span>
+                  <input type="text" name="" placeholder="{{
+                      _usuarioService.obtenerIdentidad().usuario
+                    }}" tabindex="10" disabled />
+                </div>
+                <div class="form-input">
+                  <label for="exampleInputPassword1" class="form-label">Nombre</label>
+                  <span><i class="bi bi-envelope-fill"></i></span>
+                  <input type="text" name="" placeholder="{{
+                      _usuarioService.obtenerIdentidad().nombre
+                    }}" disabled />
+                </div>
+                <div class="form-input">
+                  <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                  <span><i class="bi bi-hourglass-split"></i></span>
+                  <input type="text" name="" placeholder="{{
+                      _usuarioService.obtenerIdentidad().apellido
+                    }}" disabled />
+                </div>
+                <div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#EditarUser" (click)="obtenerUsuarioId(_usuarioService.obtenerIdentidad()._id)">
+                    Editar mi Perfil
+                  </button>
+                  <button type="submit" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#EliminarUser">
+                    Eliminar mi Perfil
+                  </button>
+                </div>
+                <br />
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!--MODAL EDITAR USUARIO-->
+        <div class="modal fade" id="EditarUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Editar mi Perfil
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form class="px-3">
+                  <div class="mb-3 form-input">
+                    <label for="exampleInputPassword1" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" name="usuario" #usuario="ngModel"
+                      [(ngModel)]="usuarioIDModel.usuario" />
+                  </div>
+                  <div class="mb-3 form-input">
+                    <label for="exampleInputPassword1" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="usuarioIDModel.nombre" />
+                  </div>
+                  <div class="mb-3 form-input">
+                    <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" name="apellido" #apellido="ngModel" [(ngModel)]="usuarioIDModel.apellido" />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Cancelar
+                </button>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-primary"  (click)="editarUsuario()">
+                  Guardar Cambios
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--MODAL ELIMINAR USUARIO-->
+        <div class="modal fade" id="EliminarUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                  Eliminar mi Perfil
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ¿Esta seguro de eliminar su cuenta?
+                <br> Al eliminar se perderan todos sus datos y no podrá recuperarlos. Tambien se eliminaran todas sus publicaciones hechas.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Cancelar
+                </button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                 (click)="eliminarUser(_usuarioService.obtenerIdentidad()._id)" (click)="cerrarSesion()">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mensaje de no autirazion -->
+<div class="container" *ngIf="_usuarioService.obtenerIdentidad().usuario == null">
+  <br />
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h1 class="tit">NO TIENES AUTORIZACIÓN</h1>
+    </div>
+  </div>
+</div>

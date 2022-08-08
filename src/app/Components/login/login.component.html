@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6 d-none d-md-block infinity-image-container">
+      <div class="contenedor">
+        <div class="caja1"></div>
+        <div class="caja2"></div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 infinity-form-container">
+      <div class="col-lg-9 col-md-12 col-sm-8 col-xs-12 infinity-form">
+        <div class="text-center ">
+          <figure id="imagen">
+          <img src="/assets/img/logoColoniaCA.png" width="200px">
+          </figure>
+        </div>
+        <div class="text-center mb-4">
+          <h4>Bienvenido</h4>
+        </div>
+        <form class="px-3">
+          <div class="form-input">
+            <span><i class="bi bi-person-fill"></i></span>
+            <input type="text" placeholder="Usuario" class="form-control" id="usuario" name="usuario" #usuario="ngModel" [(ngModel)]="usuarioModel.usuario">
+          </div>
+          <div class="form-input">
+            <span><i class="bi bi-lock-fill"></i></span>
+            <input type="password" placeholder="Contraseña" class="form-control" id="password" name="password" #password="ngModel" [(ngModel)]="usuarioModel.password">
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-block" (click)="login()">Iniciar Sesión</button>
+          </div>
+          <br>
+          <div class="text-center mb-2">
+            <div class="text-center mb-3" style="color: #777;">o inicia sesion con</div>
+            <a class="btn btn-social btn-facebook">facebook</a>
+            <a class="btn btn-social btn-google">google</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>s
+

@@ -1,0 +1,140 @@
+<div *ngIf="_usuarioService.obtenerIdentidad().usuario != null">
+
+  <nav class="main-menu">
+    <div class="scrollbar" id="style-1">
+      <ul>
+        <li routerLink="/Inicio">
+          <i class="fa fa-home fa-lg"></i>
+          <span class="nav-text" >Inicio</span>
+        </li>
+
+        <li  routerLink="/Dashboard">
+          <i class="fa fa-user fa-lg"></i>
+          <span class="nav-text">Perfil</span>
+        </li>
+
+        <li class="darkerlishadow" routerLink="/PanelNoticias">
+          <i class="fa fa-file" aria-hidden="true"></i>
+          <span class="nav-text">Noticias</span>
+        </li>
+
+        <li class="darkerli" routerLink="/Publicadores">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <span class="nav-text" >Publicadores</span>
+        </li>
+
+        <li class="darkerli"  routerLink="/Comentarios">
+          <i class="fa fa-comments-o" aria-hidden="true"></i>
+          <span class="nav-text">Comentarios</span>
+        </li>
+      </ul>
+
+      <ul class="logout">
+        <li (click)="cerrarSesion()" routerLink="/Inicio">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <span class="nav-text" >
+            Cerrar Sesión
+          </span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <br> <br>
+
+    <div class="row justify-content-md-center d-none d-md-block">
+      <div class="col-md-auto" *ngIf="_usuarioService.obtenerIdentidad().rol == 'ROL_Publicador'">
+        <h1 class="titulo">Mis Noticias</h1>
+      </div>
+      <div class="col-md-auto" *ngIf="_usuarioService.obtenerIdentidad().rol != 'ROL_Publicador'">
+        <h1 class="titulo">Panel de Noticas</h1>
+      </div>
+    </div>
+
+    <br> <br>
+  </div>
+
+  <div class="container" *ngIf="_usuarioService.obtenerIdentidad().rol == 'ROL_Publicador' ">
+    <div class="row">
+      <div class="col-5"></div>
+      <div class="col-5"></div>
+      <div class="col-2 ">
+        <button class="btn btn-outline-success" routerLink="/CrearNoticias">
+           <i class="fa fa-plus" aria-hidden="true"></i> </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publicaciones -->
+<div class="container" *ngFor="let public of publicaciones">
+  <br>
+  <div>
+
+    <div class="blog-card">
+      <div class="meta">
+        <div class="photo" style="background-image: url({{public.picture}})"></div>
+        <ul class="details">
+        </ul>
+      </div>
+      <div class="description">
+        <h1>{{public.title}}</h1>
+        <h2 *ngIf="_usuarioService.obtenerIdentidad().rol == 'ROL_ADMIN'" [routerLink]="['/Autor', public.author]">{{public.authorName}}</h2>
+        <h2>{{public.datePublication}}</h2>
+
+        <div class="module line-clamp">
+          <h2 >{{public.review}}</h2>
+        </div>
+
+        <p class="read-more">
+
+          <i class="fa fa-pencil edit" aria-hidden="true" [routerLink]="['/EditarNoticia', public._id]"></i>
+          <i class="fa fa-trash-o delete" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#EliminarPost"
+          (click)="obtenerPostId(public._id)" ></i>
+
+          <a [routerLink]="['/Post', public._id]" >Leer más</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--MODAL ELIMINAR POST-->
+<div class="modal fade" id="EliminarPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">
+        Eliminar Noticia
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      ¿Esta seguro de eliminar la noticia <span style="font-weight: bold;">{{modelPost.title}}</span>?
+      <br> Se borraran todos los comentarios y la informacion de la noticia
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Cancelar
+      </button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+       (click)="eliminarPost()">Eliminar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+<!-- Mensaje de no autirazion -->
+<div class="container" *ngIf="_usuarioService.obtenerIdentidad().usuario == null">
+  <br />
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h1 class="tit">NO TIENES AUTORIZACIÓN</h1>
+    </div>
+  </div>
+</div>

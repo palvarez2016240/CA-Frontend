@@ -1,0 +1,42 @@
+<!-- Encabezado -->
+<br>
+<div class="container">
+  <div class="row ">
+    <div class="col-md-auto">
+
+      <br> <br>
+
+      <h1 class="titulo">Noticias de {{modelPublicador.nombre}} {{modelPublicador.apellido}}</h1>
+    </div>
+  </div>
+
+  <br>
+
+<!-- Publicaciones -->
+<div class="container" *ngFor="let public of publicaciones">
+  <div>
+
+    <div class="blog-card">
+      <div class="meta">
+        <div class="photo" style="background-image: url({{public.picture}})"></div>
+        <ul class="details">
+        </ul>
+      </div>
+      <div class="description">
+        <h1>{{public.title}}</h1>
+        <h2>{{public.datePublication}}</h2>
+
+        <br>
+
+        <div class="module line-clamp">
+          <h2 >{{public.review}}</h2>
+        </div>
+
+        <p class="read-more">
+          <a [routerLink]="['/Post', public._id]" >Leer más</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
